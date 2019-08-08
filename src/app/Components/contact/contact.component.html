@@ -1,0 +1,66 @@
+<div class="contact">
+  <form [formGroup]="contactFG" (submit)="contactSubmit()">
+
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput
+             [formControl]="nameFC"
+             placeholder="input name"
+             required />
+      <mat-hint>one character or more</mat-hint>
+      <mat-error>{{getNameError()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Last name</mat-label>
+      <input matInput
+             [formControl]="lastNameFC"
+             placeholder="input last name"
+             required />
+      <mat-hint>one character or more</mat-hint>
+      <mat-error>{{getLastNameError()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Phone</mat-label>
+      <input matInput
+             [formControl]="phoneFC"
+             placeholder="input phone"
+             required />
+      <mat-hint>[+][XX]X-[XX]XXX-XXX</mat-hint>
+      <mat-error>{{getPhoneError()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>E-mail</mat-label>
+      <input matInput
+             [formControl]="emailFC"
+             placeholder="input email"
+              />
+      <mat-hint>vasia@vasia.com</mat-hint>
+      <mat-error>{{getEmailError()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Address</mat-label>
+      <input matInput
+             [formControl]="addressFC"
+             placeholder="input address"
+      />
+      <mat-error>{{getAddressError()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <textarea matInput
+             [formControl]="descriptionFC"
+             placeholder="input description"
+      ></textarea>
+    </mat-form-field>
+
+    <button type="submit" mat-raised-button color="primary" (click)="contactSubmit()">Submit</button>
+    <button type="reset" mat-raised-button color="primary">Clear</button>
+    <button mat-raised-button color="primary" (click)="cancel()">Cancel</button>
+
+  </form>
+</div>

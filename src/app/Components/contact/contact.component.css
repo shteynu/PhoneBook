@@ -1,0 +1,13 @@
+mat-form-field {display: block; width: 25vw}
+.contact{
+  position: absolute;
+  left: 50%; top: 50%; transform: translate(-50%,-50%);
+  padding: 7vh 5vw;
+  box-shadow: 2vh 2vh 5vh 0 rgba(0,0,0,0.25);
+}
+.contact:hover{
+  box-shadow: 2vh 2vh 4vh 3vh rgba(0,0,0,0.25);
+}
+button{
+  margin: 0 1vw;
+}

@@ -1,0 +1,33 @@
+<div class="authpanel">
+<form [formGroup]="authFG" (submit)="authSubmit()">
+
+  <mat-form-field>
+    <mat-label>Login</mat-label>
+    <input matInput
+           [formControl]="loginFC"
+           placeholder="input login"
+    required>
+    <mat-hint>valid email</mat-hint>
+    <mat-error>{{getLoginError()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input matInput
+           [formControl]="passwordFC"
+           placeholder="input password"
+    required>
+    <mat-hint>valid password</mat-hint>
+    <mat-error>{{getPasswordError()}}</mat-error>
+  </mat-form-field>
+
+  <button type="submit" mat-raised-button color="primary" *ngIf="signIn">Login</button>
+  <button type="submit" mat-raised-button color="primary" *ngIf="!signIn">Sign up</button>
+  <button type="reset" mat-raised-button color="primary">Reset</button>
+  <button type="button" mat-raised-button color="primary" (click)="toggleSignin()">{{signIn? 'Register':'Login'}}<!--(interpolation)--></button>
+
+</form>
+</div>
+<div class="phone">
+  <img mat-card-image src="../../../assets/Telephone-PNG-Photo.png" height="500"/>
+</div>

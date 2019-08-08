@@ -1,0 +1,74 @@
+<mat-form-field>
+  <input matInput (input)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+
+<div class="exit">
+  <button mat-raised-button color="primary" (click)="logOut()">Log out</button>
+  <button mat-raised-button color="primary" (click)="refreshData()">Refresh data</button>
+</div>
+
+
+
+<mat-table [dataSource]="dataSource" matSort multiTemplateDataRows>
+
+  <ng-container matColumnDef="expand">
+    <mat-cell *matCellDef="let obj" [attr.colspan]="displayedColumns.length">
+      <div>
+        <p>Id: {{obj.id}}</p>
+        <p>Name: {{obj.name}}</p>
+        <p>Last name: {{obj.lastName}}</p>
+        <p>Phone: {{obj.phone}}</p>
+        <p>Address: {{obj.address}}</p>
+        <p>e-mail: {{obj.email}}</p>
+        <p>Description: {{obj.description}}</p>
+      </div>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="select">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Select</mat-header-cell>
+    <mat-cell *matCellDef="let obj">
+      <mat-checkbox color="primary" (change)="cbListener(obj.id)" (click)="stopProp($event)"><!--[checked]="check(obj)"
+      color="primary" (change)="getInfo($event,obj)"
+      (click)="stopProp($event)"--></mat-checkbox></mat-cell>
+  </ng-container>
+
+
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+    <mat-cell *matCellDef="let obj">
+    {{obj.name}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="lastName">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Last name</mat-header-cell>
+    <mat-cell *matCellDef="let obj">{{obj.lastName}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="phone">
+    <mat-header-cell *matHeaderCellDef>Phone</mat-header-cell>
+    <mat-cell *matCellDef="let obj">{{obj.phone}}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"
+  (click)="expandedRow = expandedRow == row ? null : row"></mat-row>
+  <mat-row *matRowDef="let row; columns: ['expand']" class="expanded"
+  [@fullInfo]="expandedRow == row ? 'open' : 'closed'"></mat-row>
+
+  </mat-table>
+
+<mat-paginator #paginator
+               [pageSize]="6"
+               [pageSizeOptions]="[6,8,10]"
+               [showFirstLastButtons]="true"
+></mat-paginator>
+
+
+<button mat-raised-button color="primary"
+[disabled]="checkedContacts.length > 0" (click)="addContact()">Add</button>
+<button mat-raised-button color="primary"
+[disabled]="checkedContacts.length !=1"
+(click)="correctContact()">Correct</button>
+<button mat-raised-button color="accent"
+[disabled]="checkedContacts.length == 0" (click)="removeContacts()">Remove</button>

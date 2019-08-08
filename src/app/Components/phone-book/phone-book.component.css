@@ -1,0 +1,8 @@
+button {
+  margin: 5vh 1vh;}
+.expanded{box-sizing: border-box; overflow: hidden; min-height: 0;
+border:none; background-color: #eeeeee; height: auto;}
+.exit {
+  position: absolute;
+  top: 0; right: 0;
+}
